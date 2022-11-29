@@ -37,9 +37,10 @@ class RegisterController extends Controller
     {
        
         $request->validate([
-            'email' => 'required',
-            'password' => 'required',
+            'email' =>  'required',
+            'password'  =>  'required'
         ]);
+
    
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
@@ -47,7 +48,7 @@ class RegisterController extends Controller
 
         }
   
-        return back();
+        return redirect('login')->with('success', 'Login details are not valid');
     }
 
     /**

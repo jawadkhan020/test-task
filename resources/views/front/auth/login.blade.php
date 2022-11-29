@@ -15,13 +15,13 @@
                 </div>
               </div>
               <div class="card-body">
-                <form role="form" class="text-start" action="{{route('admin.login.post')}}" method="POST">
+                <form role="form" class="text-start" action="{{url('login')}}" method="POST">
                   @csrf
                   <div class="input-group input-group-outline my-3">
                     <label class="form-label">Email</label>
                     <input type="email" name="email" class="form-control @error('email') is-invalid @enderror">
                     @error('email')
-                    <span class="invalid-feedback" role="alert">
+                    <span class="invalid-feedback text-danger" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
                   @enderror
@@ -30,7 +30,7 @@
                     <label class="form-label">Password</label>
                     <input type="password" name="password" class="form-control @error('password') is-invalid @enderror">
                     @error('password')
-                        <span class="invalid-feedback" role="alert">
+                        <span class="invalid-feedback text-danger" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
                      @enderror
