@@ -272,7 +272,6 @@ class AuthController extends Controller
                     'message' => 'Logout Successfully',    
                 ]);
             }
-
             return response()->json([
                 'code' => '201',
                 'message' => 'Not Found',    
