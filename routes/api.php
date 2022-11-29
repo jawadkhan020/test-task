@@ -25,6 +25,7 @@ use App\Http\Controllers\API\VehicleController;
     Route::post('/sign-up', [AuthController::class, 'signup']);
     Route::post('/sign-in', [AuthController::class, 'signIn']);
     Route::post('/reset-password', [AuthController::class, 'resetPassword']);
+    
 /*
 |--------------------------------------------------------------------------
 | middleware
@@ -32,6 +33,7 @@ use App\Http\Controllers\API\VehicleController;
 */
     Route::middleware(['adminApi'])->group(function () {
 
+    Route::post('/logout', [AuthController::class, 'logout']);
     Route::post('/update-profile', [AuthController::class, 'updateProfile']);
     Route::post('/update-password', [AuthController::class, 'updatePassword']);
 

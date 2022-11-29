@@ -247,4 +247,41 @@ class AuthController extends Controller
             return response()->json(['error' => trans('api.something_went_wrong')], 500);
         }
     }
+
+    public function logout(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'user_id' => 'required'
+        ]);
+
+        try{
+            if ($validator->fails()){
+                return response()->json([
+                    'message' => 'Validation Error',
+                    'data' => $validator->errors()->first()
+                ],422);
+            }
+          
+            $user = User::where('id',$request->user_id)
+                ->first();
+            if($user){
+                $user->api_token = '';
+                $user->save();
+                return response()->json([
+                    'code' => '200',
+                    'message' => 'Logout Successfully',    
+                ]);
+            }
+
+            return response()->json([
+                'code' => '201',
+                'message' => 'Not Found',    
+            ]);
+        } catch (Exception $e) {
+            return response()->json([
+                'message' => 'Something Went Wrong!',
+                'data' => $e->getMessage(),
+            ],500);
+        }
+    }
 }

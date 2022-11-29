@@ -35,8 +35,8 @@ Route::post('reset/password-post', [RegisterController::class, 'reset_post'])->n
 |--------------------------------------------------------------------------
 */
 Route::middleware(['auth', 'user-access'])->group(function () {
-Route::prefix('admin')->group(function () {
     
+Route::prefix('admin')->group(function () {  
 Route::get('/dashboard', [HomeController::class, 'index'])->name('home');
 Route::get('/logout', [RegisterController::class, 'logout'])->name('admin.logout');
 
