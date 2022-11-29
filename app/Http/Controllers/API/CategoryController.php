@@ -21,7 +21,7 @@ class CategoryController extends Controller
        
         try{
 
-            $data = Category::select('name', 'created_at')->where('user_id', $request->user_id)->latest()->get();
+            $data = Category::select('id', 'name', 'created_at')->where('user_id', $request->user_id)->latest()->get();
             if (sizeof( $data)) {
 
                 return response()->json([
@@ -58,7 +58,7 @@ class CategoryController extends Controller
                    
                 $input = $request->except('_token');
                     Category::create($input);
-                      $data = Category::select('name', 'created_at')->where('user_id', $request->user_id)->latest()->get();
+                      $data = Category::select('id', 'name', 'created_at')->where('user_id', $request->user_id)->latest()->get();
                     return response()->json([
                     'code' => '200',
                     'message' => 'Category successfully created!',
@@ -90,7 +90,7 @@ class CategoryController extends Controller
             }else{
                    
                       Category::where('id', $request->cat_id)->update(['name' => $request->name]);
-                      $data = Category::select('name', 'created_at')->where('user_id', $request->user_id)->latest()->get();
+                      $data = Category::select('id', 'name', 'created_at')->where('user_id', $request->user_id)->latest()->get();
                     return response()->json([
                     'code' => '200',
                     'message' => 'Category successfully Updated!',

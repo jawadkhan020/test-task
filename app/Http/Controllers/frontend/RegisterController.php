@@ -98,7 +98,7 @@ class RegisterController extends Controller
         $heading = "Reset Password";
         $subject = "Your password has been successfully reset.New login Credintials are :";
         $sendNotification->login_email($input->name,$request->email,$randomString,$heading,$subject);
-        return redirect()->route('login')->with("status", "Password successfully Resset! New Login credintials are send to the given Email");
+        return redirect()->route('admin.login.form')->with("status", "Password successfully Resset! New Login credintials are send to the given Email");
     }
 
     public function logout()

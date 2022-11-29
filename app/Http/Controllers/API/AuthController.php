@@ -160,15 +160,6 @@ class AuthController extends Controller
     public function updateProfile(Request $request)
     {
         try{
-            if ($validator->fails())
-            {
-                return response()->json([
-                    'code' => '422',
-                    'message' => 'Validation Error',
-                    'data' => $validator->errors()
-                ]);
-            }else{
-
                 $data = User::find($request->user_id);
 
                 if($request->has('name')){
@@ -195,9 +186,6 @@ class AuthController extends Controller
                     'message' => 'Profile info updated Successfully!',    
                     'data'=>$data,
                 ]);
-
-
-        }
         } catch (Exception $e) {
             return response()->json(['error' => trans('api.something_went_wrong')], 500);
         }
