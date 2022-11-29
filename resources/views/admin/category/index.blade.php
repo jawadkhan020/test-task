@@ -39,11 +39,13 @@
                     <td class="text-sm font-weight-normal">{{date('d-m-Y', strtotime($item->created_at));}}</td>
                     <td class="text-sm font-weight-normal">
                         <a class="btn btn-warning"  onclick="assingtemp(this)" data-all="{{$item}}"> Edit</a>
-                        <form action="{{route('admin.category.delete', $item->id)}}" method="POST">
+                 
+                        <form style="float: left;padding-right:20px;" action="{{route('admin.category.delete', $item->id)}}" method="POST">
                           @csrf
                           
                           <button type="submit" class="btn btn-danger" onclick="return catDelete()">Delete</button>
                         </form>
+                      
                     </td>
                   </tr>
                   @endforeach

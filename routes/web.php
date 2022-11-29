@@ -20,7 +20,6 @@ use App\Http\Controllers\frontend\RegisterController;
 
 Auth::routes();
 Route::get('/login', [RegisterController::class, 'loginForm'])->name('admin.login.form');
-// Route::post('/login-post', [RegisterController::class, 'login'])->name('admin.login.post');
 Route::get('/', [RegisterController::class, 'index'])->name('admin.register.index');
 Route::post('admin-register', [RegisterController::class, 'store'])->name('admin.register.post');
 Route::get('reset/password', [RegisterController::class, 'reset'])->name('admin.reset.password');

@@ -49,9 +49,12 @@
                     <td class="text-sm font-weight-normal">{{date('d-m-Y', strtotime($item->created_at));}}</td>
                     <td class="text-sm font-weight-normal">
                         <a class="btn btn-warning"  onclick="assingtemp(this)" data-all="{{$item}}"> Edit</a>
-                        
-                          <button type="submit" class="btn btn-danger remove-use" data-id="{{ $item->id }}" data-action="{{ route('admin.vehicle.delete',$item->id) }}" onclick="deleteConfirmation({{$item->id}})">Delete</button>
-                
+                        <a href="">
+                        <form  action="{{route('admin.vehicle.delete', $item->id)}}" method="POST">
+                          @csrf
+                          <button type="submit" class="btn btn-danger" onclick="return catDelete()">Delete</button>
+                        </form>
+                      </a>
                     </td>
                   </tr>
                   @endforeach
@@ -198,45 +201,12 @@
         $('#edit-model').modal('show');
     };
 </script>
-<script type="text/javascript">
-  function deleteConfirmation(id) {
-      swal({
-          title: "Delete?",
-          text: "Please ensure and then confirm!",
-          type: "warning",
-          showCancelButton: !0,
-          confirmButtonText: "Yes, delete it!",
-          cancelButtonText: "No, cancel!",
-          reverseButtons: !0
-      }).then(function (e) {
-  
-          if (e === true) {
-         
-              var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
-     
-              $.ajax({
-                  type: 'POST',
-                  url: "{{url('/admin/dashboard/vehicle-delete')}}/" + id,
-                  data: {_token: CSRF_TOKEN},
-                  dataType: 'JSON',
-                  success: function (results) {
-
-                      if (results.success === true) {
-                          swal("Done!", results.message, "success");
-                          fetchcategory();
-                      } else {
-                          swal("Error!", results.message, "error");
-                      }
-                  }
-              });
-
-          } else {
-              e.dismiss;
-          }
-
-      }, function (dismiss) {
-          return false;
-      })
+<script>
+  function catDelete() {
+  if (confirm("Are you sure want to delete?")) {
+      return true;
   }
+  return false;
+}
 </script>
 @endsection
