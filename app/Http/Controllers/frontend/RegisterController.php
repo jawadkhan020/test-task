@@ -35,6 +35,7 @@ class RegisterController extends Controller
 
     public function login(Request $request)
     {
+       
         $request->validate([
             'email' => 'required',
             'password' => 'required',
@@ -46,7 +47,7 @@ class RegisterController extends Controller
 
         }
   
-        redirect()->route('admin.login.form')->withSuccess('Login details are not valid');
+        return back();
     }
 
     /**
