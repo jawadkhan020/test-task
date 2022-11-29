@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Category;
-use App\MOdels\Vehicle;
+use App\Models\Vehicle;
 use Validator;
 class VehicleController extends Controller
 {
