@@ -5,7 +5,6 @@
     <thead>
       <tr>
 
-        <!-- <th style="text-align:right;font-weight:400;">Vehicle Booking Invoice< /th>-->
         <th style="text-align:right;font-weight:400;font-weight: bold;">{{date('Y-m-d')}}</th>
       </tr>
       <tr style="height: 15px"></tr>

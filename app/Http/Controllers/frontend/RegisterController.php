@@ -51,12 +51,7 @@ class RegisterController extends Controller
         return redirect('login')->with('success', 'Login details are not valid');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+//   Register  user
     public function store(Request $request)
     {
         $request->validate([
@@ -70,6 +65,9 @@ class RegisterController extends Controller
         $randomString = Str::random(6);
         $input['password'] =Hash::make($randomString);
         $input = User::create($input);
+
+        //   Email Notification
+
         $sendNotification = new EmailNotification();
         $heading = "Registration Invitation";
         $subject = "Your account has been successfully created at Test Task CarManagement System. ";
@@ -94,6 +92,8 @@ class RegisterController extends Controller
    
         $input->password = Hash::make($randomString);
         $input->save();
+
+           // reset  Email Notification
         $sendNotification = new EmailNotification();
         $heading = "Reset Password";
         $subject = "Your password has been successfully reset.New login Credintials are :";

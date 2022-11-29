@@ -57,7 +57,7 @@ class AuthController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Sign-in user .
      *
      * @return \Illuminate\Http\Response
      */
@@ -110,7 +110,7 @@ class AuthController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Reset Password.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -159,11 +159,6 @@ class AuthController extends Controller
      */
     public function updateProfile(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-           
-            'email' => '',        
-            
-        ]);
         try{
             if ($validator->fails())
             {

@@ -88,27 +88,22 @@
                     </select>
                   </div>
                 <div class="input-group input-group-outline my-3">
-                  {{-- <label class="form-label"> Name</label> --}}
                   <input type="text" id="edit-name" class="form-control" name="name" required onfocus="focused(this)" onfocusout="defocused(this)">
                 </div>
                 <div class="input-group input-group-outline my-3">
-                    {{-- <label class="form-label"> Image</label> --}}
                     <input type="file" class="form-control" name="images" onfocus="focused(this)" onfocusout="defocused(this)">
                   </div>
                 <div class="input-group input-group-outline my-3">
-                    {{-- <label class="form-label"> Brand</label> --}}
                     <input type="text" id="edit-brand" class="form-control" name="brand" required onfocus="focused(this)" onfocusout="defocused(this)">
                   </div>
                   <div class="input-group input-group-outline my-3">
-                    {{-- <label class="form-label"> Model</label> --}}
                     <input type="text" id="edit-vmodel" class="form-control" name="model" required onfocus="focused(this)" onfocusout="defocused(this)">
                   </div>
                   <div class="input-group input-group-outline my-3">
-                    {{-- <label class="form-label"> Color</label> --}}
+
                     <input type="text" id="edit-color" class="form-control" name="color" required onfocus="focused(this)" onfocusout="defocused(this)">
                   </div>
                   <div class="input-group input-group-outline my-3">
-                    {{-- <label class="form-label"> Registration No</label> --}}
                     <input type="text" id="edit-registration_no" class="form-control" name="registration_no" required onfocus="focused(this)" onfocusout="defocused(this)">
                   </div>
                 <div class="text-end">
@@ -186,13 +181,12 @@
                           });
                 @endif
 </script>
-
+{{-- Show edit model --}}
 <script>
      function assingtemp(val){
         data = $(val).attr('data-all');
         data = JSON.parse(data);
         $('#edit-id').val(data.id);
-        // $('#edit-cat-id').val(data.id);
         $('#edit-name').val(data.name);
         $('#edit-brand').val(data.brand);
         $('#edit-vmodel').val(data.model);

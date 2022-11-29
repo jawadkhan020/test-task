@@ -17,25 +17,30 @@ use App\Http\Controllers\API\VehicleController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
-Route::prefix('admin')->group(function () {
-
-Route::post('/sign-up', [AuthController::class, 'signup']);
-Route::post('/sign-in', [AuthController::class, 'signIn']);
-Route::post('/reset-password', [AuthController::class, 'resetPassword']);
-
-Route::middleware(['adminApi'])->group(function () {
+    Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+        return $request->user();
+    });
+    Route::prefix('admin')->group(function () {
+ // -----------******Auth route*********---------
+    Route::post('/sign-up', [AuthController::class, 'signup']);
+    Route::post('/sign-in', [AuthController::class, 'signIn']);
+    Route::post('/reset-password', [AuthController::class, 'resetPassword']);
+/*
+|--------------------------------------------------------------------------
+| middleware
+|--------------------------------------------------------------------------
+*/
+    Route::middleware(['adminApi'])->group(function () {
 
     Route::post('/update-profile', [AuthController::class, 'updateProfile']);
     Route::post('/update-password', [AuthController::class, 'updatePassword']);
-    
+
+    // -----------******Category route*********---------
     Route::get('/category-list', [CategoryController::class, 'categryList']);
     Route::post('/create-category', [CategoryController::class, 'store']);
     Route::post('/update-category', [CategoryController::class, 'update']);
     Route::delete('/delete-category', [CategoryController::class, 'destroy']);
-
+ // -----------******vehicle route*********---------
     Route::get('/list-vehicle', [VehicleController::class, 'vehicleList']);
     Route::post('/store-vehicle', [VehicleController::class, 'store']);
     Route::post('/update-vehicle', [VehicleController::class, 'update']);
