@@ -6,6 +6,7 @@ use App\Http\Controllers\admin\SettingController;
 use App\Http\Controllers\admin\VehicleController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\frontend\RegisterController;
+use App\Http\Middleware\XSS;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,6 +20,8 @@ use App\Http\Controllers\frontend\RegisterController;
 
 //-----------*********** Auth ***********------------
 Auth::routes();
+Route::group(['middleware' => ['XSS']], function () {
+
 Route::get('/login', [RegisterController::class, 'loginForm'])->name('admin.login.form');
 Route::get('/', [RegisterController::class, 'index'])->name('admin.register.index');
 Route::post('admin-register', [RegisterController::class, 'store'])->name('admin.register.post');
@@ -55,5 +58,6 @@ Route::get('/dashboard/vehicle', [VehicleController::class, 'index'])->name('adm
 Route::post('/dashboard/vehicle-store', [VehicleController::class, 'store'])->name('admin.vehicle.store');
 Route::post('/dashboard/vehicle-update', [VehicleController::class, 'update'])->name('admin.vehicle.update');
 Route::post('/dashboard/vehicle-delete/{id}', [VehicleController::class, 'destroy'])->name('admin.vehicle.delete');
+});
 });
 });
