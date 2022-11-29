@@ -15,7 +15,6 @@
       <tr>
 
         <td style=" padding:10px 20px;" >{{$description}}</td>
-        
       </tr>
     </thead>
     <tbody>
