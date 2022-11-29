@@ -19,7 +19,6 @@
       </tr>
     </thead>
     <tbody>
-    
       <tr>
         <td style=" padding:10px 20px;">Email: <strong>{{$to}}</strong></td>
       </tr>
